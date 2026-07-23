@@ -1,0 +1,23 @@
+{
+  "name": "liefwork-viewer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "dev:public": "vite --open /public.html",
+    "build": "vite build",
+    "build:studio": "vite build --outDir dist/studio",
+    "build:public": "vite build --config vite.config.public.ts",
+    "dev:app": "vite --open /app.html",
+    "build:app": "vite build --config vite.config.app.ts",
+    "verify:public": "bun ../scripts/verify-deploy-bundle.ts",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@happy-dom/global-registrator": "^20.9.0",
+    "typescript": "^5.5.0",
+    "vite": "^5.4.19"
+  }
+}

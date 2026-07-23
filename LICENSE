@@ -1,0 +1,175 @@
+Liefwork Source-Available License
+Version 1.0 — Effective date: 23 July 2026
+
+Copyright © 2026 Pavlos Zafiropoulos, sole trader (ατομική επιχείρηση)
+trading as Phigram, publisher of Liefwork, Athens, Greece
+(ΑΦΜ/VAT: EL142939055) (the "Licensor"). Contact: info@liefwork.com.
+(Full registered postal address available on request.)
+
+The canonical text of this License is published at
+https://liefwork.com/obsidian-plugin/license.
+
+This software is source-available, not open source. You may read, run, and
+modify it as set out below; you may not use it to build a competing
+product. Individual, non-profit, and educational use is free; internal use
+by any other organization requires a commercial license. Please read the
+full terms.
+
+1. Definitions
+- "Software" — the Liefwork for Obsidian plugin, together with the
+  Liefwork rendering/layout engine, viewer, and all other source code,
+  build artifacts, and accompanying files distributed with it in the
+  Licensor's source repository or otherwise made available by the
+  Licensor under this License. Code the Licensor serves as part of the
+  liefwork.com website is not made available under this License.
+- "You" — the individual or entity exercising rights under this License.
+- "Client" — a single natural person, or a single legal entity, that engages
+  You to perform bespoke work under §2.4. Each affiliate or group company is
+  a separate Client.
+- "Competing Product" — any product, application, or service that (a)
+  incorporates, is derived from, or reproduces a substantial part of the
+  Software (including its layout/rendering engine), and (b) is offered or
+  distributed to third parties as a general-purpose product or service (i.e.
+  beyond your own personal or internal use, or a Bespoke Delivery under
+  §2.4), and (c) competes with, or serves as a substitute for, any current
+  or publicly announced commercial offering of the Licensor — including the
+  Liefwork for Obsidian plugin, any standalone Liefwork application, and any
+  hosted or cloud ("SaaS") offering. For the avoidance of doubt, a Competing
+  Product is not limited to software that runs on or interoperates with
+  Obsidian; a standalone application or online service that competes with a
+  Licensor offering is equally covered.
+- "Pro Features" — the optional extras of the Software that the Licensor
+  designates as requiring a valid Pro license key (cosmetic additions and
+  removal of the in-app reminder; the core Software is free and fully
+  functional within the limits of §2.2).
+- "Attribution Notice" — the statement: "Based on Liefwork
+  (https://liefwork.com), © Pavlos Zafiropoulos, used under the Liefwork
+  Source-Available License (https://liefwork.com/obsidian-plugin/license)."
+
+2. Grant of rights (Permitted Use)
+Subject to your compliance with this License, the Licensor grants you a
+worldwide, royalty-free, non-exclusive license to:
+1. view, read, audit, and study the Software;
+2. run and use the Software (i) for your own individual use — as a natural
+   person, for any purpose, including your own work — and (ii) for the
+   internal purposes of a non-profit organization or an accredited
+   educational institution. Internal use by any other organization
+   requires a separate commercial license from the Licensor, beyond a
+   one-time evaluation of up to sixty (60) days in aggregate. (The core
+   Software is free within these limits; Pro Features require a key per
+   §3.);
+3. modify the Software and run your modified copy for your own personal or
+   internal use, within the same limits as §2.2;
+4. make a "Bespoke Delivery": modify the Software and use it to perform
+   bespoke paid work for a Client (e.g. consulting, setup, custom corals),
+   including installing or deploying the modified copy for that single
+   Client's own internal use — provided ALL of the following conditions are
+   met:
+   (a) the modified copy is materially specific to that Client. Delivering
+       the same or a substantially similar modified copy to more than one
+       Client is not bespoke work but distribution of a general-purpose
+       product, prohibited under §4 without a commercial license;
+   (b) you deliver to the Client, together with the modified copy, a
+       complete copy of this License and written notice that the delivered
+       software is derived from Liefwork and remains subject to this
+       License;
+   (c) you retain all copyright, license, trademark, and attribution
+       notices in the source, and include the Attribution Notice (§1) in a
+       reasonably prominent, user-visible place in the deliverable or its
+       accompanying documentation (e.g. a settings pane, about screen, or
+       README);
+   (d) you do not distribute the modified copy to anyone other than that
+       Client, do not offer the Software as a general-purpose product or
+       service, and do not thereby create a Competing Product (§1);
+   (e) the modified copy remains subject to this License in the Client's
+       hands, including the internal-use limits of §2.2 (a Client outside
+       the free individual/non-profit/educational categories requires its
+       own commercial license); the Client may not further distribute it.
+
+3. Pro Features (license-key gate)
+The core Software is free and fully functional within the limits of §2.2;
+no license key is required for any core feature. Pro Features require a
+valid license key obtained from the Licensor via an optional one-time €5.99
+purchase (a fixed-price sale of a digital good — see the EULA). Bypassing,
+disabling, circumventing, or assisting others to circumvent the license-key
+gate is prohibited. It is likewise prohibited to modify the Software — or
+to procure, distribute, or install a modification — so as to enable any Pro
+Feature, or to remove or suppress the in-app reminder, without a valid key,
+whether or not the license-key gate itself is altered.
+
+4. Restrictions (Non-Compete)
+Without a separate written commercial license from the Licensor, you may NOT:
+1. use the Software, or any substantial part of it, as a component of a
+   Competing Product (§1) — on any platform, whether as an Obsidian (or
+   similar-app) plugin, a standalone application, or a hosted/online
+   service;
+2. redistribute the Software, modified or unmodified, as a general-purpose
+   product or service to third parties, or make it available to third
+   parties as a hosted or managed service;
+3. distribute, publish, or otherwise make available to third parties any
+   modified copy or derivative of the Software — whether under the
+   Licensor's marks or renamed under any other name (the sole exception is
+   a Bespoke Delivery to a single Client meeting every condition of §2.4;
+   modification for your own use is permitted per §2.3);
+4. remove, alter, or obscure any copyright, license, trademark, or
+   attribution notices, including the Attribution Notice in a Bespoke
+   Delivery.
+
+5. Contributions
+Contributions to the Software are accepted only under the Licensor's
+Contributor License Agreement (CLA), published as CLA.md in the source
+repository and at https://liefwork.com/obsidian-plugin/cla, granting the
+Licensor the rights necessary to use, distribute, and relicense the
+contribution. By
+submitting a contribution you agree to the CLA.
+
+6. Reservation of commercial rights
+All rights not expressly granted are reserved. All commercial exploitation
+rights in the Software remain exclusively with the Licensor.
+
+7. Trademarks
+"Liefwork" and associated names and logos are trademarks of the Licensor
+and are not licensed under this License. You may not use them to promote,
+distribute, or pass off any modified copy, derivative, or other product as
+the Licensor's, or to suggest sponsorship or endorsement by the Licensor.
+Truthful, non-confusing nominative references are permitted — e.g. stating
+that your services or a Bespoke Delivery are "for Liefwork" or "based on
+Liefwork", and including the Attribution Notice required by §2.4. Renaming
+a modified copy creates no right to distribute it — distribution of
+modified copies to third parties is prohibited under §4 (the sole exception
+being a Bespoke Delivery under §2.4), whether under the Licensor's marks or
+any other name.
+
+8. No warranty
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, to the maximum
+extent permitted by applicable law.
+
+9. Limitation of liability
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LICENSOR SHALL NOT
+BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM OR IN
+CONNECTION WITH THE SOFTWARE OR ITS USE. Nothing in this License limits
+liability that cannot be excluded under applicable Greek or EU law.
+
+10. Termination
+This License terminates automatically upon any breach, in particular of §3
+(key gate) or §4 (non-compete) — except that a breach consisting solely of
+unlicensed organizational use under §2.2 may be cured within thirty (30)
+days of notice by obtaining a commercial license or ceasing the use. On
+termination you must cease use and distribution of the Software.
+
+11. Governing law and jurisdiction
+This License is governed by the laws of Greece, without regard to
+conflict-of-laws rules. The courts of Athens, Greece shall have exclusive
+jurisdiction, subject to any mandatory consumer-protection rules of the
+user's country of residence.
+
+12. Future open-source conversion
+On the date four (4) years after the release date of any given version of
+the Software, that version will additionally be made available under the
+Apache License, Version 2.0. The release date of each version is the date
+recorded for that version in the CHANGELOG (or release notes) published
+with the Software. Each released version converts on its own four-year
+anniversary; the Licensor may convert a version earlier at its discretion
+but never later.

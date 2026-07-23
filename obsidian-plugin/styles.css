@@ -1,0 +1,527 @@
+/*
+ * LiefWork plant pane — render rules copied from viewer/src/style.css and
+ * scoped under .liefwork-plant-view so they never bleed into Obsidian's UI.
+ * Only the SVG-render rules are included; Studio/HUD/side-panel chrome is omitted.
+ */
+
+.liefwork-plant-view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Fallback var defaults (mirror the viewer :root); mountPlant also sets
+   * these inline per-config, which wins. */
+  --bg:    #0c0c0e;
+  --curve: #5a5a60;
+  /* Dark-mode v1 (founder decision, 4 July): the coral canvas is intrinsically
+   * dark, so the whole plugin view + HUD stay dark REGARDLESS of the Obsidian
+   * theme. These fixed tokens replace the theme variables (--background-*,
+   * --text-*) that flip to light under a light theme. Scoped to this class only,
+   * so nothing leaks to Obsidian's own UI, and modals/menus stay native-themed. */
+  --lw-hud-bg: #17171a;
+  --lw-panel-bg: #242429;
+  --lw-panel-bg-hover: #2e2e34;
+  --lw-border: #2a2a2e;
+  --lw-text: #e6e6e6;
+  --lw-text-muted: #b0b0b0;
+  --lw-text-faint: #6a6a6a;
+  background: var(--bg, #0c0c0e);
+}
+
+/* --- Split shell: plant fills the pane, HUD docks at the right --- */
+.liefwork-plant-view .liefwork-shell {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.liefwork-plant-view .liefwork-full-view {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 5;
+  font-size: 0.82em;
+  padding: 3px 10px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.liefwork-plant-view .liefwork-full-view:hover {
+  opacity: 1;
+}
+.liefwork-plant-view .liefwork-preview-toggle {
+  position: absolute;
+  bottom: 10px;
+  left: 96px;
+  z-index: 5;
+  font-size: 0.82em;
+  padding: 3px 10px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.liefwork-plant-view .liefwork-preview-toggle:hover {
+  opacity: 1;
+}
+.liefwork-plant-view .liefwork-preview-toggle.is-active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  opacity: 1;
+}
+/* Text-sizing overlay: a compact "Aa" toggle top-left of the coral pane that
+   expands a small two-slider panel — same visual language as the bottom-left
+   Full view / Preview buttons. */
+.liefwork-plant-view .liefwork-text-sizing-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 6;
+  font-size: 0.82em;
+  padding: 3px 10px;
+  cursor: pointer;
+  opacity: 0.85;
+  background: var(--lw-panel-bg);
+  color: var(--lw-text);
+  border: 1px solid var(--lw-border);
+  box-shadow: none;
+}
+.liefwork-plant-view .liefwork-text-sizing-toggle:hover {
+  opacity: 1;
+  background: var(--lw-panel-bg-hover);
+}
+.liefwork-plant-view .liefwork-text-sizing-toggle.is-active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  opacity: 1;
+}
+.liefwork-plant-view .liefwork-text-sizing-panel {
+  position: absolute;
+  top: 42px;
+  left: 10px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--lw-border);
+  border-radius: 6px;
+  background: var(--lw-panel-bg);
+  color: var(--lw-text);
+}
+.liefwork-plant-view .liefwork-text-sizing-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.liefwork-plant-view .liefwork-text-sizing-label {
+  flex: 0 0 88px;
+  font-size: 0.78em;
+}
+.liefwork-plant-view .liefwork-text-sizing-slider {
+  flex: 1 1 auto;
+  width: 130px;
+  cursor: pointer;
+}
+.liefwork-plant-view .liefwork-text-sizing-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background: transparent;
+  color: var(--lw-text);
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.liefwork-plant-view .liefwork-text-sizing-reset:hover {
+  opacity: 1;
+  background: var(--lw-panel-bg-hover);
+}
+.liefwork-plant-view .liefwork-text-sizing-reset svg {
+  width: 13px;
+  height: 13px;
+}
+.liefwork-plant-view .liefwork-plant-area {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--bg, #0c0c0e);
+}
+.liefwork-plant-view .liefwork-hud {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 14px 16px;
+  overflow-y: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  border-left: 1px solid var(--lw-border);
+  background: var(--lw-hud-bg);
+  color: var(--lw-text);
+}
+/* Pop-out windows: float the HUD over the plant instead of docking it, so
+   opening the HUD never resizes the plant pane (which, in an async-laid-out
+   pop-out, triggered the reflow/refit fights). The plant keeps full width; the
+   user pans/zooms if the panel covers a node. */
+.liefwork-plant-view .liefwork-shell.is-overlay-hud .liefwork-hud {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  flex: none;
+  z-index: 6;
+}
+/* Width modes still apply in overlay — full height + aspect-ratio derives width. */
+.liefwork-plant-view .liefwork-shell.is-overlay-hud .liefwork-hud.is-rect,
+.liefwork-plant-view .liefwork-shell.is-overlay-hud .liefwork-hud.is-square {
+  width: auto;
+  max-width: 70%;
+}
+/* Width modes (the header toggle). Narrow = default 320px flex-basis above.
+   Rect = portrait golden rectangle; Square = width equals height. Capped so the
+   HUD never swallows the plant on a big screen. The width change resizes the
+   plant area → the canvas ResizeObserver redraws + keeps hit targets aligned. */
+.liefwork-plant-view .liefwork-hud.is-rect {
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1.618;
+  max-width: 70%;
+}
+.liefwork-plant-view .liefwork-hud.is-square {
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
+  max-width: 70%;
+}
+.liefwork-plant-view .liefwork-hud-modes {
+  display: flex;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+.liefwork-plant-view .liefwork-hud-modes button {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--lw-text-faint);
+  cursor: pointer;
+  padding: 2px 4px;
+  display: inline-flex;
+  align-items: center;
+}
+.liefwork-plant-view .liefwork-hud-modes button:hover { color: var(--lw-text-muted); }
+.liefwork-plant-view .liefwork-hud-modes button.is-active { color: var(--lw-text); }
+.liefwork-plant-view .liefwork-hud-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.liefwork-plant-view .liefwork-hud-title {
+  flex: 1 1 auto;
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.3;
+  word-break: break-word;
+  color: var(--lw-text);
+}
+.liefwork-plant-view .liefwork-hud-archived {
+  margin-left: 6px;
+  font-size: 0.8em;
+  opacity: 0.7;
+  font-style: italic;
+}
+.liefwork-plant-view .liefwork-hud-close {
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  color: var(--lw-text-muted);
+  cursor: pointer;
+  font-size: 0.95em;
+  padding: 2px 6px;
+  box-shadow: none;
+}
+.liefwork-plant-view .liefwork-hud-close:hover { color: var(--lw-text); }
+.liefwork-plant-view .liefwork-hud-open {
+  align-self: flex-start;
+  font-size: 0.82em;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.liefwork-plant-view .liefwork-hud-summary {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: var(--lw-text-muted);
+  border-top: 1px solid var(--lw-border);
+  padding-top: 10px;
+  overflow-wrap: anywhere;
+}
+.liefwork-plant-view .liefwork-hud-summary > :first-child { margin-top: 0; }
+.liefwork-plant-view .liefwork-hud-summary > :last-child { margin-bottom: 0; }
+.liefwork-plant-view .liefwork-hud-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.liefwork-plant-view .liefwork-hud-add {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.liefwork-plant-view .liefwork-hud-input {
+  width: 100%;
+  min-height: 64px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.9em;
+  line-height: 1.4;
+  /* Fixed-dark: Obsidian's default textarea is light under a light theme (a
+   * glaring white patch in the otherwise-dark HUD). Pin it dark. */
+  background: var(--lw-panel-bg);
+  color: var(--lw-text);
+  border: 1px solid var(--lw-border);
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+.liefwork-plant-view .liefwork-hud-input::placeholder { color: var(--lw-text-faint); }
+.liefwork-plant-view .liefwork-hud-add-option {
+  font-size: 0.82em;
+  color: var(--lw-text-muted);
+}
+.liefwork-plant-view .liefwork-hud-branch-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.liefwork-plant-view .liefwork-hud-branch-label input { cursor: pointer; }
+.liefwork-plant-view .liefwork-hud-add-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.liefwork-plant-view .liefwork-hud-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--lw-border);
+  padding-top: 10px;
+}
+.liefwork-plant-view .liefwork-hud-prev,
+.liefwork-plant-view .liefwork-hud-centre,
+.liefwork-plant-view .liefwork-hud-next { cursor: pointer; }
+.liefwork-plant-view .liefwork-hud-add-buttons button {
+  cursor: pointer;
+}
+
+/* Fixed-dark buttons: Obsidian's default button is light-grey under a light
+ * theme. Pin the plugin's own buttons dark so there are no light patches over
+ * the dark canvas / in the HUD. The accent CTA (.mod-cta) and the active preview
+ * toggle keep their accent styling (readable in both themes) — excluded here. */
+.liefwork-plant-view .liefwork-full-view,
+.liefwork-plant-view .liefwork-preview-toggle:not(.is-active),
+.liefwork-plant-view .liefwork-hud-open,
+.liefwork-plant-view .liefwork-hud-add-note,
+.liefwork-plant-view .liefwork-hud-prev,
+.liefwork-plant-view .liefwork-hud-centre,
+.liefwork-plant-view .liefwork-hud-next {
+  background: var(--lw-panel-bg);
+  color: var(--lw-text);
+  border: 1px solid var(--lw-border);
+  box-shadow: none;
+}
+.liefwork-plant-view .liefwork-full-view:hover,
+.liefwork-plant-view .liefwork-preview-toggle:not(.is-active):hover,
+.liefwork-plant-view .liefwork-hud-open:hover,
+.liefwork-plant-view .liefwork-hud-add-note:hover,
+.liefwork-plant-view .liefwork-hud-prev:hover,
+.liefwork-plant-view .liefwork-hud-centre:hover,
+.liefwork-plant-view .liefwork-hud-next:hover {
+  background: var(--lw-panel-bg-hover);
+}
+
+.liefwork-plant-view svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+.liefwork-plant-view svg.panning { cursor: grabbing; }
+.liefwork-plant-view svg.panning > g { pointer-events: none; }
+
+.liefwork-agent-pill {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.4em;
+  padding: 0 0.4em;
+  border-radius: 0.5em;
+  font-size: 0.85em;
+  line-height: 1.4;
+  color: var(--liefwork-agent-color);
+  border: 1px solid var(--liefwork-agent-color);
+}
+.liefwork-agent-pill::before {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 0.3em;
+  border-radius: 50%;
+  background: var(--liefwork-agent-color);
+}
+
+/* Terminal tab tint — outside .liefwork-plant-view by necessity (tab headers). */
+.liefwork-agent-tab {
+  box-shadow: inset 3px 0 0 var(--liefwork-agent-color);
+}
+
+/* Color-prompt swatch buttons.
+ *
+ * The class is doubled to raise specificity to (0,2,0). A single class (0,1,0)
+ * loses to Obsidian's own control-button styling (`.setting-item-control
+ * button` — (0,1,1)), which sets background-color; the swatches then painted
+ * plain grey and previewed nothing. Doubling outranks it without !important.
+ * background-image is cleared for the same reason: core sets a gradient on some
+ * button states that would otherwise sit over the flat colour. Hover/focus are
+ * held to the swatch color too — core's `button:hover` would repaint them. */
+.liefwork-swatch-btn.liefwork-swatch-btn,
+.liefwork-swatch-btn.liefwork-swatch-btn:hover,
+.liefwork-swatch-btn.liefwork-swatch-btn:focus {
+  min-width: 2em;
+  background-color: var(--liefwork-swatch-color);
+  background-image: none;
+}
+
+/* Pro swatches for free users: visible but dimmed — the color still previews
+ * (the tease is the point) while reading as not-yet-yours. Same doubled-class
+ * specificity as above so the dim survives core's hover repaint. */
+.liefwork-swatch-locked.liefwork-swatch-locked,
+.liefwork-swatch-locked.liefwork-swatch-locked:hover,
+.liefwork-swatch-locked.liefwork-swatch-locked:focus {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Support-prompt dialog (support-prompt-modal.ts) — native modal theming;
+ * only the body prose gets a comfortable reading rhythm. */
+.liefwork-support-prompt .liefwork-support-prompt-body {
+  line-height: 1.5;
+}
+.liefwork-support-prompt .liefwork-support-prompt-body p {
+  margin: 0 0 0.75em;
+}
+
+/* Centre the dialogue buttons in BOTH payment prompts (the Ice Cream Man and the
+ * support prompt). Both build their choices with `new Setting(contentEl)`, whose
+ * .setting-item is a two-column row: an info column (name + description) and a
+ * RIGHT-aligned control column. Neither dialog sets a name or description, so the
+ * info column is empty — but it still claims its flex share and shoves the
+ * buttons to the right edge, away from the art and prose they belong to. Collapse
+ * the empty column and centre the controls.
+ *
+ * Also drops the row's border-top: it's a separator between settings rows, and
+ * these are a dialogue's choices, not a settings list. */
+.liefwork-ice-cream-man .setting-item,
+.liefwork-support-prompt .setting-item {
+  border-top: none;
+  padding: 0.75em 0 0;
+  justify-content: center;
+}
+.liefwork-ice-cream-man .setting-item-info,
+.liefwork-support-prompt .setting-item-info {
+  display: none;
+}
+.liefwork-ice-cream-man .setting-item-control,
+.liefwork-support-prompt .setting-item-control {
+  justify-content: center;
+  flex-grow: 0;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+/* Ice Cream Man clickventure (ice-cream-man-modal.ts). The art slot renders
+ * whatever ICE_CREAM_ASSETS supplies — now the real square illustrations, which
+ * carry scene detail (the queue, the chalkboard flavours, his face) that the
+ * placeholder glyphs did not. Hence 360px rather than the old 200px: at 200 the
+ * photographs read as thumbnails and the expression is lost. Capped by vh too,
+ * so the vignette never outgrows a short window and pushes its own buttons off. */
+.liefwork-ice-cream-man .liefwork-ice-cream-art {
+  display: flex;
+  justify-content: center;
+  margin: 0.5em 0 1em;
+}
+.liefwork-ice-cream-man .liefwork-ice-cream-art img {
+  width: 360px;
+  max-width: 100%;
+  max-height: 42vh;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.liefwork-ice-cream-man .liefwork-ice-cream-body {
+  line-height: 1.5;
+}
+.liefwork-ice-cream-man .liefwork-ice-cream-body p {
+  margin: 0 0 0.75em;
+}
+
+/* Liefwork Pro settings section (settings-tab.ts). */
+.liefwork-pro-buy {
+  margin: 0.25em 0 0.75em;
+  font-size: var(--font-ui-small);
+}
+.liefwork-pro-disclosure {
+  margin-top: 0.75em;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+}
+/* Inline "Pro" tag on a locked perk setting's name. */
+.liefwork-pro-tag {
+  margin-left: 0.5em;
+  padding: 0 0.4em;
+  border-radius: 0.6em;
+  font-size: var(--font-ui-smaller);
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+}
+
+/* --- Shared visibility utility + mount chrome (viewer dom-visibility.ts /
+ * mount-plant.ts). Scoped copies of the viewer style.css rules — the viewer
+ * used to set these as inline styles, which the plugin review forbids;
+ * viewer/test/dom-visibility.test.ts pins that both stylesheets carry the
+ * hidden rule. --- */
+.liefwork-plant-view .lw-hidden { display: none; }
+.liefwork-plant-view .lw-plant-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* pan/zoom + clicks land on the SVG even with no painted content */
+  pointer-events: all;
+}
+.liefwork-plant-view .lw-motion-layer {
+  /* position:relative so the absolutely-positioned canvas (inset:0) anchors here;
+   * pan/zoom rides this wrapper as a GPU CSS transform during motion. */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+/* Tier-alternate dot-glyph fills (viewer render.ts used to pin the meristem
+ * variant inline; the site's style.css has carried these from the start). */
+.liefwork-plant-view .projection-dot-text {
+  fill: var(--proj-light, #ffd890);
+  fill-opacity: 0.7;
+  pointer-events: none;
+}
+.liefwork-plant-view .stencil-meristem .projection-dot-text {
+  fill: var(--proj-meristem-light, var(--proj-light, #ffd890));
+}
