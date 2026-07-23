@@ -1,0 +1,121 @@
+Liefwork Source-Available License
+Version 1.0 — Effective date: 23 July 2026
+
+Copyright © 2026 Pavlos Zafiropoulos, sole trader (ατομική επιχείρηση)
+trading as Phigram, publisher of Liefwork, Athens, Greece
+(ΑΦΜ/VAT: EL142939055) (the "Licensor"). Contact: info@liefwork.com.
+(Full registered postal address available on request.)
+
+This software is source-available, not open source. You may read, run, and
+modify it as set out below, but you may not use it to build a competing
+product. Please read the full terms.
+
+1. Definitions
+- "Software" — the Liefwork for Obsidian plugin, including its source code,
+  build artifacts, and accompanying files made available by the Licensor.
+- "You" — the individual or entity exercising rights under this License.
+- "Competing Product" — any product, application, or service that (a)
+  incorporates, is derived from, or reproduces a substantial part of the
+  Software (including its layout/rendering engine), and (b) is offered or
+  distributed to third parties as a general-purpose product or service (i.e.
+  beyond your own personal or internal use, or bespoke work for an individual
+  client), and (c) competes with, or serves as a substitute for, any current
+  or planned commercial offering of the Licensor — including the Liefwork for
+  Obsidian plugin, any standalone Liefwork application, and any hosted or
+  cloud ("SaaS") offering. For the avoidance of doubt, a Competing Product is
+  not limited to software that runs on or interoperates with Obsidian; a
+  standalone application or online service that competes with a Licensor
+  offering is equally covered.
+- "Pro Features" — the optional extras of the Software that the Licensor
+  designates as requiring a valid Pro license key (cosmetic additions and
+  removal of the in-app reminder; the core Software is free and fully
+  functional).
+
+2. Grant of rights (Permitted Use)
+Subject to your compliance with this License, the Licensor grants you a
+worldwide, royalty-free, non-exclusive license to:
+1. view, read, audit, and study the Software;
+2. run and use the Software for your own personal, internal, or business
+   purposes (the core Software is free; Pro Features require a key per §3);
+3. modify the Software and run your modified copy for your own personal or
+   internal use;
+4. modify the Software and use it to perform bespoke paid work for an
+   individual client (e.g. consulting, setup, custom corals), including
+   installing or deploying a modified copy for that single client's own
+   internal use — provided you do not thereby create or distribute a
+   Competing Product (§1), distribute the modified Software to anyone other
+   than that single client, or offer the Software as a general-purpose
+   product or service. A modified copy so delivered remains subject to this
+   License in the client's hands; the client may not further distribute it.
+
+3. Pro Features (license-key gate)
+The core Software is free and fully functional; no license key is required
+for any core feature. Pro Features require a valid license key obtained from
+the Licensor via an optional one-time €5.99 purchase (a fixed-price sale of a
+digital good — see the EULA). Bypassing, disabling, circumventing, or
+assisting others to circumvent the license-key gate is prohibited.
+
+4. Restrictions (Non-Compete)
+Without a separate written commercial license from the Licensor, you may NOT:
+1. use the Software, or any substantial part of it, as a component of a
+   Competing Product (§1) — on any platform, whether as an Obsidian (or
+   similar-app) plugin, a standalone application, or a hosted/online service;
+2. redistribute the Software, modified or unmodified, as a general-purpose
+   product or service to third parties;
+3. distribute, publish, or otherwise make available to third parties
+   generally any modified copy or derivative of the Software — whether under
+   the Licensor's marks or renamed under any other name (the sole exception
+   is delivering a modified copy to a single individual client for that
+   client's own internal use under §2.4; modification for your own use is
+   permitted per §2.3);
+4. remove, alter, or obscure any copyright, license, trademark, or
+   attribution notices.
+
+5. Contributions
+Contributions to the Software are accepted only under a Contributor License
+Agreement (CLA) granting the Licensor the rights necessary to use,
+distribute, and relicense the contribution. By submitting a contribution you
+agree to the CLA.
+
+6. Reservation of commercial rights
+All rights not expressly granted are reserved. All commercial exploitation
+rights in the Software remain exclusively with the Licensor.
+
+7. Trademarks
+"Liefwork" and associated names and logos are trademarks of the Licensor and
+are not licensed under this License. You may not use them to promote,
+distribute, or pass off any modified copy, derivative, or other product.
+Renaming a modified copy creates no right to distribute it — distribution of
+modified copies to third parties is prohibited under §4 (the sole exception
+being a bespoke delivery to a single individual client under §2.4), whether
+under the Licensor's marks or any other name.
+
+8. No warranty
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, to the maximum extent
+permitted by applicable law.
+
+9. Limitation of liability
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LICENSOR SHALL NOT BE
+LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM OR IN
+CONNECTION WITH THE SOFTWARE OR ITS USE. Nothing in this License limits
+liability that cannot be excluded under applicable Greek or EU law.
+
+10. Termination
+This License terminates automatically upon any breach, in particular of §3
+(key gate) or §4 (non-compete). On termination you must cease use and
+distribution of the Software.
+
+11. Governing law and jurisdiction
+This License is governed by the laws of Greece, without regard to
+conflict-of-laws rules. The courts of Athens, Greece shall have exclusive
+jurisdiction, subject to any mandatory consumer-protection rules of the
+user's country of residence.
+
+12. Future open-source conversion
+On the date four (4) years after the release date of any given version of the
+Software, that version will additionally be made available under the Apache
+License, Version 2.0. Each released version converts on its own four-year
+anniversary; the Licensor may convert a version earlier at its discretion but
+never later.
