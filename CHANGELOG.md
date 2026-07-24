@@ -1,0 +1,42 @@
+# Changelog
+
+Release dates recorded here are the authoritative "release date of a
+version" for the purposes of §12 (future open-source conversion) of the
+[LICENSE](LICENSE).
+
+## 0.1.4 — 24 July 2026
+
+Build-verification follow-ups — no feature changes. The root `build`
+script now leaves `main.js` at the repository root where verification
+looks for it; the `builtin-modules` package is replaced by Node's own
+`builtinModules` (byte-identical output). (Converts to Apache-2.0 on
+24 July 2030 per LICENSE §12.)
+
+## 0.1.3 — 24 July 2026
+
+`fundingUrl` now points at the Lemon Squeezy storefront
+(liefwork.lemonsqueezy.com — a stable, directly reachable page one click
+from supporting the project). No other changes. (Converts to Apache-2.0
+on 24 July 2030 per LICENSE §12.)
+
+## 0.1.2 — 24 July 2026
+
+Directory health follow-ups — no feature changes. `fundingUrl` points at
+the stable product page (the checkout's per-session redirect read as
+unreachable to automated checks); a root `build` script (+ esbuild at the
+root) enables the directory's build verification against this tree.
+(Converts to Apache-2.0 on 24 July 2030 per LICENSE §12.)
+
+## 0.1.1 — 24 July 2026
+
+Directory-review hardening — no feature changes. Visibility toggles moved
+from inline styles to stylesheet classes; timers and rAF bound to their own
+window (pop-out correctness); lockfiles ship with the release tree so builds
+verify; typed-lint clean. Adds this repository's CONTRIBUTING.md. (Converts
+to Apache-2.0 on 24 July 2030 per LICENSE §12.)
+
+## 0.1.0 — 23 July 2026
+
+Initial public release: Liefwork for Obsidian — live coral pane, Liefwork
+Source-Available License v1.0. (Converts to Apache-2.0 on 23 July 2030 per
+LICENSE §12.)

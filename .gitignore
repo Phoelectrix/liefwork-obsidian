@@ -1,0 +1,34 @@
+node_modules
+*.log
+.DS_Store
+dist/
+.superpowers/
+
+# Claude Code local settings + worktrees (per-machine; never committed)
+.claude/
+CLAUDE.local.md
+
+# Local plant workspace — symlink to the user's authoring vault outside the repo.
+viewer/downloads
+
+# Lumen authoring bundles kept locally beside the viewer for dev convenience —
+# the canonical sources live in the authoring vault and shouldn't be committed.
+viewer/lumen-by-*.liefwork.json
+
+# Frozen test fixture sourced locally; the engine builds it on demand.
+test/fixtures/sources/scifi.geometry.liefwork.json
+
+# Site publish output — built by scripts/publish-site.ts, rsynced into ../liefwork-site-deploy/
+dist-site/
+
+# Locally-built site bundle dropped beside the viewer for dev preview (generated).
+viewer/site.geometry.liefwork.json
+viewer/site.metadata.json
+
+# Obsidian plugin's per-machine runtime settings (generated when the plugin runs).
+obsidian-plugin/data.json
+
+# local dev-server gallery symlinks (absolute personal paths — never track)
+viewer/galleries/
+# root build-verification artifact (cp of obsidian-plugin/main.js)
+/main.js
