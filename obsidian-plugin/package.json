@@ -1,0 +1,20 @@
+{
+  "name": "liefwork-obsidian",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs production",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "cd .. && bun test",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.5",
+    "eslint": "^9.39.4",
+    "eslint-plugin-obsidianmd": "^0.4.1",
+    "obsidian": "^1.5.7",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.63.0"
+  }
+}

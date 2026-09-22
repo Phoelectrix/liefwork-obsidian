@@ -1,0 +1,108 @@
+{
+  "sun": {
+    "azimuth": 1.3089969389957472,
+    "elevation": 0.4363323129985824
+  },
+  "bud": {
+    "baseline": "follow-tangent",
+    "minimalSkinFontScale": 0.35
+  },
+  "cull": {
+    "cullBufferFactor": 1.5
+  },
+  "projection": {
+    "liefRelativeAngle": 1.5707963267948966,
+    "meristemRelativeAngle": 0,
+    "liefFanRange": 0.4363323129985824,
+    "cursorLight": true,
+    "cursorLightRay": "fixed",
+    "liefDistance": 1.8,
+    "meristemDistance": 3,
+    "titleSize": 0.24,
+    "light": "#EEF2F8",
+    "meristemLight": "#E8B96A",
+    "pathLight": "#A8B4BC",
+    "pathIncludeRoot": false,
+    "pathOpacity": 0.94,
+    "rootMeristemDistance": 5,
+    "lightOpacity": 0.95,
+    "sourceOpacity": 0,
+    "ray": {
+      "stroke": "#8499B8",
+      "opacity": 0.35,
+      "width": 1
+    },
+    "showBounds": false,
+    "liefDistanceCurveAmp": 0,
+    "liefDistanceCurvePeak": 0.618
+  },
+  "body": {
+    "fill": "#2A3540",
+    "baseOpacity": 0,
+    "cursorBoost": 1.6,
+    "edgeSoftness": 0.5
+  },
+  "overrides": {},
+  "stem": {
+    "color": "#8499B8"
+  },
+  "background": {
+    "color": "#080A0C"
+  },
+  "atmosphere": {
+    "horizon": false,
+    "horizonStrength": 1,
+    "vignette": false,
+    "vignetteStrength": 0.55,
+    "glow": false,
+    "glowStrength": 0.7,
+    "haze": false,
+    "hazeStrength": 0.5,
+    "grain": false,
+    "grainStrength": 0.15,
+    "motes": 0
+  },
+  "v2Stem": {
+    "maxWidth": 5,
+    "minWidth": 1.5,
+    "tipOpacity": 0.35,
+    "subtreeExp": 2.75
+  },
+  "meristemLabelIncludeParent": false,
+  "wrapWithFilenameRoot": false,
+  "motionMode": "rest-only",
+  "settleStyle": "interpolated",
+  "initialLiefCull": false,
+  "basalMag": 1.4,
+  "optimalSize": 70,
+  "liefOptimalSize": 10,
+  "bubbleWidth": 0.5,
+  "subtreeBoost": 0.65,
+  "subtreeBoostShape": 3.8,
+  "cursorMagnification": 3,
+  "meristemCullMinPx": 0,
+  "meristemDotsAbovePx": 14,
+  "meristemFullAbovePx": 3,
+  "meristemPeakSize": 200,
+  "liefCullMinPx": 0,
+  "liefDotsAbovePx": 1,
+  "liefFullAbovePx": 5.5,
+  "liefPeakSize": 100,
+  "liefMaxLift": 1.1,
+  "staggerBatchSize": 32,
+  "attentionPropagationDecay": 0.35,
+  "panelTheme": "dark",
+  "liefBlock": {
+    "mode": "label",
+    "justify": true,
+    "sizeRatio": 0.58,
+    "maxLines": 5
+  },
+  "camera": {
+    "fitPadding": 0.12,
+    "branchFramePad": 1.5,
+    "branchFitPad": 1.2,
+    "zoomOutMax": 2,
+    "pinchZoomGain": 7
+  }
+}

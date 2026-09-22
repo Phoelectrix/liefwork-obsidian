@@ -1,0 +1,11 @@
+{
+  "id": "liefwork",
+  "name": "Liefwork",
+  "version": "0.2.0",
+  "minAppVersion": "1.8.7",
+  "description": "Reveal your vault's true shape and grow \"memory corals\" for your AI agents.",
+  "author": "Pavlos",
+  "authorUrl": "https://liefwork.com",
+  "fundingUrl": "https://liefwork.lemonsqueezy.com/",
+  "isDesktopOnly": true
+}
